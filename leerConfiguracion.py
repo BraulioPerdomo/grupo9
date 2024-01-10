@@ -1,7 +1,8 @@
 velocidadDeParpadeo = 1
 
 def leerConfiguracion():
-    
+    global velocidadDeParpadeo
+
     f = open("configuracion.ini", "r")
     lineas = f.readlines()
 
@@ -13,8 +14,12 @@ def leerConfiguracion():
         #print(datos)
     f.close()
 
-#print(f"Valocidad: {velocidadDeParpadeo}")
+def grabarConfiguracion():
+    f = open("configuracion.ini", "w")
+    f.write("velocidad="+str(velocidadDeParpadeo)+"\r")
+    f.close()
+
 
 leerConfiguracion()
 
-print (f"velocidad: {velocidadDeParpadeo}")
+#print(f"Velocidad: {velocidadDeParpadeo}")
