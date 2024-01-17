@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>reporte</title>
+    </head>
+    <body>
+        <h1>reporte</h1>
+        <table border="1">
+            <tr>
+                <th>Fecha</th>
+                <th>Temperatura</th>
+                <th>Humedad</th>
+            </tr>
+{% for dato in resultado %}            
+            <tr>
+                <td>{{ dato[1] }} </td>
+                <td>{{ dato[2] }} </td>
+                <td>{{ dato[3] }} </td>
+            </tr>
+{% endfor %}
+        </table>
+    </body>
+</html>
