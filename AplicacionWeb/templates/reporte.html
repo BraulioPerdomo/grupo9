@@ -1,9 +1,13 @@
 <html>
     <head>
-        <title>reporte</title>
+        <title>Reporte</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
     <body>
-        <h1>reporte</h1>
+        <h1>Reporte</h1>
+
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
         <table border="1">
             <tr>
                 <th>Fecha</th>
@@ -18,5 +22,40 @@
             </tr>
 {% endfor %}
         </table>
+    <script>
+      const xValues = [
+{% for dato in resultado %}            
+          '{{ dato[1] }}',
+{% endfor %}
+];
+      
+      new Chart("myChart", {
+        type: "line",
+        data: {
+          labels: xValues,
+          datasets: [{ 
+            data: [
+{% for dato in resultado %}            
+          {{ dato[2] }},
+{% endfor %}              
+            ],
+            borderColor: "red",
+            fill: false
+          }, { 
+            data: [
+            {% for dato in resultado %}            
+          {{ dato[3] }},
+{% endfor %}              
+
+            ],
+            borderColor: "green",
+            fill: false
+          }]
+        },
+        options: {
+          legend: {display: false}
+        }
+      });
+      </script>
     </body>
-</html>
+  </html>
